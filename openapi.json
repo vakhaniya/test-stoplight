@@ -18,7 +18,7 @@
       "get": {
         "summary": "New Endpoint",
         "operationId": "get_new-endpoint",
-        "description": "interesting description",
+        "description": "very interesting description",
         "responses": {
           "200": {
             "description": "Successful response"
@@ -32,6 +32,14 @@
               "type": "number"
             },
             "description": "limit value!"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "offset",
+            "description": "offset value"
           }
         ]
       }
