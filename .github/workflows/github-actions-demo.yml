@@ -7,7 +7,7 @@ permissions:
 on:
   push:
     branches:
-      - "feature/*"
+      - "docs/*"
 
 jobs:
   auto-pr:
