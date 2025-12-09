@@ -5,7 +5,7 @@ permissions:
   pull-requests: write
 
 on:
-  create:
+  push:
     branches:
       - "feature/*"
 
