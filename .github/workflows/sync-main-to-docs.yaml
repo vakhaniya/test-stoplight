@@ -1,0 +1,30 @@
+name: Main to Docs Sync
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Set up Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Merge main into docs
+        run: |
+          git fetch origin docs
+          git checkout docs
+          git merge --ff-only origin/main || echo "Nothing to merge"
+          if ! git diff --quiet; then
+            git commit -am "Sync main -> docs [skip ci]"
+            git push origin docs
+          else
+            echo "No changes to push"
