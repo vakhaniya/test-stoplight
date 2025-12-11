@@ -11,6 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
+          ref: docs
           fetch-depth: 0
 
       - name: Set up Git
@@ -20,11 +21,6 @@ jobs:
 
       - name: Merge main into docs
         run: |
-          echo "zero"
-          git fetch origin refs/heads/docs:refs/remotes/origin/docs
-          echo "one"
-          git checkout refs/heads/docs
-          echo "two"
           git merge --ff-only origin/main || echo "Nothing to merge"
           echo "three"
           if ! git diff --quiet; then
