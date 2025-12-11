@@ -1,5 +1,8 @@
 name: Main to Docs Sync
 
+permissions:
+  contents: write
+
 on:
   push:
     branches:
