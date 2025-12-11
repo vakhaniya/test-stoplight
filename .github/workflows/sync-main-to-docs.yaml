@@ -23,14 +23,14 @@ jobs:
           echo "zero"
           git fetch origin refs/heads/docs:refs/remotes/origin/docs
           echo "one"
-          git checkout docs
+          git checkout refs/heads/docs
           echo "two"
           git merge --ff-only origin/main || echo "Nothing to merge"
           echo "three"
           if ! git diff --quiet; then
             git commit -am "Sync main -> docs [skip ci]"
             echo "four"
-            git push origin docs
+            git push origin refs/heads/docs
             echo "five"
           else
             echo "No changes to push"
