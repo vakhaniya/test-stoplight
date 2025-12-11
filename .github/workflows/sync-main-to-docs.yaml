@@ -24,7 +24,7 @@ jobs:
           git merge --ff-only origin/main || echo "Nothing to merge"
           echo "three"
           if ! git diff --quiet HEAD origin/docs; then
-            git commit -am "Sync main -> docs [skip ci]"
+            git commit --allow-empty -am "Sync main -> docs [skip ci]"
             echo "four"
             git push origin refs/heads/docs
             echo "five"
