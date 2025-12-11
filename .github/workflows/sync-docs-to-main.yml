@@ -11,6 +11,7 @@ on:
 
 jobs:
   auto-pr:
+    if: "!contains(github.event.head_commit.message, 'update-docs')"
     runs-on: ubuntu-latest
     steps:
       - name: Create Pull Request
