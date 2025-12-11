@@ -20,7 +20,7 @@ jobs:
 
       - name: Merge main into docs
         run: |
-          git fetch origin docs --
+          git fetch origin refs/heads/docs:refs/remotes/origin/docs
           git checkout docs
           git merge --ff-only origin/main || echo "Nothing to merge"
           if ! git diff --quiet; then
