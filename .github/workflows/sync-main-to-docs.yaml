@@ -30,3 +30,4 @@ jobs:
             echo "five"
           else
             echo "No changes to push"
+          fi
