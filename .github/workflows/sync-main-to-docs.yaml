@@ -26,7 +26,7 @@ jobs:
         run: |
           echo "three"
           if ! git diff --quiet HEAD origin/main; then
-            git merge origin/main --no-ff -m "Sync main -> docs [skip update-docs]"
+            git merge origin/main --no-ff -m "Sync main -> docs"
             echo "four"
             git push origin refs/heads/docs
             echo "five"
