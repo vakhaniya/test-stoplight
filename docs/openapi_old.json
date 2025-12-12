@@ -44,7 +44,10 @@
             "name": "offset",
             "description": "offset value"
           }
-        ]
+        ],
+        "x-stoplight": {
+          "id": "uk125p2scekpi"
+        }
       }
     }
   },
