@@ -24,6 +24,7 @@ jobs:
 
       - name: Merge main into docs
         run: |
+          git fetch origin main
           echo "three"
           if ! git diff --quiet HEAD origin/main; then
             git merge origin/main --no-ff -m "Sync main -> docs"
