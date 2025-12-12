@@ -7,7 +7,7 @@
     },
     {
       "type": "item",
-      "title": "Todo123",
+      "title": "API",
       "uri": "/docs/openapi.json"
     }
   ]

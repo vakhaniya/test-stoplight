@@ -1,5 +1,8 @@
 {
   "openapi": "3.0.0",
+  "x-stoplight": {
+    "id": "21f2612968fe5"
+  },
   "info": {
     "version": "1.0.0",
     "title": "Old specification!!",
@@ -41,7 +44,10 @@
             "name": "offset",
             "description": "offset value"
           }
-        ]
+        ],
+        "x-stoplight": {
+          "id": "uk125p2scekpi"
+        }
       }
     }
   },
