@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "version": "1.0.0",
-    "title": "Old specification",
+    "title": "Old specification!",
     "description": {
       "$ref": "./description.yaml#/general"
     }
