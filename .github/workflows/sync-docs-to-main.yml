@@ -65,7 +65,8 @@ jobs:
           if ! git diff --quiet origin/main...HEAD; then
             echo "Обнаружены изменения. Попытка создания PR..."
 
-            EXISTING_PR=$(gh pr list --base main --head docs --state open --json number --jq '.[0].number')  
+            EXISTING_PR=$(gh pr list --base main --head docs --state open --json number --jq '.[0].number // ""')
+            echo "RESULT: $EXISTING_PR"
             if [ -n "$EXISTING_PR" ]; then
               echo "Open PR #$EXISTING_PR already exists. Exiting."
               exit 0 
