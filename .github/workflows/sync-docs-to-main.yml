@@ -65,16 +65,18 @@ jobs:
             echo "Обнаружены изменения. Попытка создания PR..."
 
             BRANCH_NAME="auto-docs-sync"
+            EXISTING_PR=$(gh pr list --base main --head "$BRANCH_NAME" --state open --json number --jq '.[0].number // ""')
+            
+            if [ -n "$EXISTING_PR" ]; then
+              echo "Pull request #$EXISTING_PR already exists. Updating..."
+              git switch -c "$BRANCH_NAME" --track "origin/$BRANCH_NAME"
+              git pull origin docs --rebase
+              git push origin "$BRANCH_NAME"
+              exit 0 
+            fi
 
             git switch -c "$BRANCH_NAME"
             git push origin "$BRANCH_NAME"
-
-            EXISTING_PR=$(gh pr list --base main --head "$BRANCH_NAME" --state open --json number --jq '.[0].number // ""')
-            echo "RESULT: $EXISTING_PR"
-            if [ -n "$EXISTING_PR" ]; then
-              echo "Open PR #$EXISTING_PR already exists. Exiting."
-              exit 0 
-            fi
     
             gh pr create \
               --base main \
