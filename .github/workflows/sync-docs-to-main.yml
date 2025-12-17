@@ -64,7 +64,16 @@ jobs:
           if ! git diff --quiet origin/main...HEAD; then
             echo "Обнаружены изменения. Попытка создания PR..."
 
-            EXISTING_PR=$(gh pr list --base main --head docs --state open --json number --jq '.[0].number // ""')
+            # Генерируем уникальное имя ветки
+            BRANCH_NAME="auto/docs-$(date +%Y%m%d-%H%M%S)"
+          
+            # Создаём ветку от текущего HEAD
+            git switch -c "$BRANCH_NAME"
+          
+            # Пушим ветку
+            git push origin "$BRANCH_NAME"
+
+            EXISTING_PR=$(gh pr list --base main --head "$BRANCH_NAME" --state open --json number --jq '.[0].number // ""')
             echo "RESULT: $EXISTING_PR"
             if [ -n "$EXISTING_PR" ]; then
               echo "Open PR #$EXISTING_PR already exists. Exiting."
@@ -73,7 +82,7 @@ jobs:
     
             gh pr create \
               --base main \
-              --head docs \
+              --head "$BRANCH_NAME" \
               --reviewer $REVIEWERS \
               --title "Автоматическое обновление документации" \
               --body "Найдены изменения в ветке docs. Создан автоматический PR."
