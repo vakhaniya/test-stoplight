@@ -27,9 +27,9 @@ jobs:
           git fetch origin main
           echo "three"
           if ! git diff --quiet HEAD origin/main; then
-            git rebase origin/main
+            git merge origin/main --no-ff -m "Sync main -> docs"
             echo "four"
-            git push --force-with-lease origin refs/heads/docs
+            git push origin refs/heads/docs
             echo "five"
           else
             echo "No changes to push"
