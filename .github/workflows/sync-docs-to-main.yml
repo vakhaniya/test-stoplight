@@ -33,7 +33,7 @@
 name: Create PR if changes exist
 
 env:
-  REVIEWERS: vakhaniya,vakhaniya-pod
+  REVIEWERS: vakhaniya
 
 on:
   push:
