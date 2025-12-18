@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "version": "1.0.0",
-    "title": "My App. (from github2)",
+    "title": "My App. (from github3)",
     "description": {
       "$ref": "./description.yaml#/general"
     }
