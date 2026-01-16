@@ -8,7 +8,7 @@
     {
       "type": "item",
       "title": "API",
-      "uri": "/docs/openapi.json"
+      "uri": "/docs/openapi.yaml"
     }
   ]
 }
